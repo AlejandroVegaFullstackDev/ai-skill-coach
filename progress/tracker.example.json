@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "skill": "mecanica-motos",
+  "goal": "diagnosticar una averia por sintoma sin manual",
+  "baseline": {
+    "measured_at": "2026-09-22",
+    "production": {
+      "diagnostico": "L1",
+      "intervencion": "L2"
+    },
+    "reception": {
+      "identificacion-de-sintomas": "L2",
+      "lectura-de-esquemas": "L1"
+    },
+    "evidence": "caso practico de 40 min, narrado en voz alta: no llego a una hipotesis sin ayuda, salto el descarte, ejecuto bien el cambio de pastillas siguiendo instrucciones"
+  },
+  "items": [
+    {
+      "id": "descarte-de-hipotesis",
+      "state": "practiced",
+      "first_seen": "2026-09-22",
+      "last_seen": "2026-09-28",
+      "fail_count": 3,
+      "correct_streak": 0,
+      "evidence": [
+        "descarto el rodamiento sin comprobarlo porque el ruido cambiaba al frenar",
+        "cambio la pieza antes de reproducir el sintoma"
+      ],
+      "review_stage": null,
+      "due": null
+    },
+    {
+      "id": "comprobar-la-causa-antes-de-sustituir",
+      "state": "taught",
+      "first_seen": "2026-09-22",
+      "last_seen": "2026-09-22",
+      "fail_count": 2,
+      "correct_streak": 0,
+      "evidence": [
+        "monto pastillas nuevas sin medir el disco"
+      ],
+      "review_stage": null,
+      "due": null
+    },
+    {
+      "id": "sistema-de-frenos-componentes",
+      "state": "mastered",
+      "first_seen": "2026-09-22",
+      "last_seen": "2026-10-02",
+      "fail_count": 1,
+      "correct_streak": 2,
+      "evidence": [],
+      "review_stage": 2,
+      "due": "2026-10-09"
+    },
+    {
+      "id": "diagnostico-electrico-basico",
+      "state": "unseen",
+      "first_seen": null,
+      "last_seen": null,
+      "fail_count": 0,
+      "correct_streak": 0,
+      "evidence": [],
+      "review_stage": null,
+      "due": null
+    }
+  ],
+  "sessions": [
+    {
+      "date": "2026-09-22",
+      "command": "assess",
+      "minutes": 40,
+      "items_touched": [
+        "descarte-de-hipotesis",
+        "comprobar-la-causa-antes-de-sustituir",
+        "sistema-de-frenos-componentes"
+      ],
+      "notes": "linea base. Produccion verificada por narracion, no por observacion directa"
+    },
+    {
+      "date": "2026-09-28",
+      "command": "learn",
+      "minutes": 10,
+      "items_touched": [
+        "descarte-de-hipotesis"
+      ],
+      "notes": "sin herramientas, caso sobre papel. Ordeno hipotesis, fallo la comprobacion prioritaria"
+    },
+    {
+      "date": "2026-10-02",
+      "command": "log",
+      "minutes": 60,
+      "items_touched": [
+        "sistema-de-frenos-componentes"
+      ],
+      "notes": "averia real de un conocido. Identifico los componentes sin dudar"
+    }
+  ],
+  "mastered_archive": []
+}

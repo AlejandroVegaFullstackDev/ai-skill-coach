@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(skill-coach)",
+      "Skill(source-harvester)",
+      "Skill(english-coach)",
+      "Read(./private/**)",
+      "Read(./progress/**)",
+      "Read(./sources/**)",
+      "Read(./knowledge/**)",
+      "Read(./ejercicios/**)",
+      "Edit(./private/**)",
+      "Edit(./progress/**)",
+      "Edit(./knowledge/**)",
+      "Edit(./ejercicios/**)"
+    ]
+  }
+}

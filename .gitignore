@@ -1,0 +1,95 @@
+# ─────────────────────────────────────────────────────────────
+#  DATOS PERSONALES — nunca se publican
+#
+#  Este repositorio es open source. Todo lo que describa a una
+#  persona concreta (perfil, nivel, errores, grabaciones) vive
+#  fuera del control de versiones.
+#
+#  Si anades una carpeta nueva con datos de usuario, anadela
+#  aqui ANTES del primer commit.
+# ─────────────────────────────────────────────────────────────
+
+private/*
+!private/README.md
+
+progress/*
+!progress/README.md
+!progress/tracker.example.json
+
+# Material crudo que aporta el usuario: puede contener material
+# con derechos, y documentos de su empresa.
+sources/pdf/*
+!sources/pdf/.gitkeep
+sources/notes/*
+!sources/notes/.gitkeep
+sources/links/*
+!sources/links/.gitkeep
+!sources/README.md
+
+# Curriculo y fichas: generados contra el nivel de UNA persona.
+# Quitalos de aqui si quieres versionar los tuyos.
+ejercicios/*
+!ejercicios/README.md
+knowledge/*
+!knowledge/README.md
+
+# Grabaciones de voz: datos biometricos, nunca al repo
+*.mp3
+*.m4a
+*.wav
+*.ogg
+*.webm
+*.mp4
+recordings/
+
+# Salida de analisis de pronunciacion (contiene transcripciones)
+*.pronunciation.json
+analysis/
+
+# ─────────────────────────────────────────────────────────────
+#  SECRETOS
+# ─────────────────────────────────────────────────────────────
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials*
+*_token*
+*apikey*
+
+# ─────────────────────────────────────────────────────────────
+#  Modelos y build
+# ─────────────────────────────────────────────────────────────
+
+models/
+*.onnx
+*.gguf
+*.safetensors
+node_modules/
+__pycache__/
+.venv/
+venv/
+
+# ─────────────────────────────────────────────────────────────
+#  SO y editores
+# ─────────────────────────────────────────────────────────────
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+scratch/
+*.local.md
+
+# Capturas de verificacion: fotos y fotogramas del aprendiz
+capturas/
+*.jpg
+*.jpeg
+*.png
+!assets/**
+
+# Config personal del agente: nunca se publica
+.claude/settings.local.json
