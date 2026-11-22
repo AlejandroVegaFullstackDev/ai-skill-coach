@@ -128,16 +128,21 @@ se pierde también lo que sí sabía.
 
 ## Paso 6: Registrar la deuda
 
-Escribir en el tracker del perfil activo, con los ítems marcados `via: crash`:
+Si el perfil activo **no tiene tracker** (sin línea base), no se crea: eso solo lo hace
+`/assess`. Decirlo y dejar la deuda escrita en el cierre de la sesión.
 
-- Estado **`taught`**, nunca `practiced` ni `mastered`. Se explicó; no se ha producido bajo
-  condiciones reales.
-- Repaso a **2 días**, sin excepción. Un crash sin repaso se evapora entero.
+Si lo tiene, escribir con los ítems marcados `via: crash`:
+
+- Solo lo **recién explicado** entra como **`taught`**, nunca `practiced` ni `mastered`. Un ítem que
+  ya existía conserva su estado: un crash no degrada ni promociona nada.
+- Práctica a **2 días**: `due` en el ítem `taught` como recordatorio para `/plan` y `/learn`. No es
+  un repaso de `/review`, que solo saca `mastered`. Un crash sin práctica se evapora entero.
 
 Cerrar así:
 
 > Queda como deuda. Si esto va a formar parte de tu trabajo, corre `/plan` esta semana y lo
-> consolidamos de verdad. Si era para el jueves y ya pasó, déjalo: se archiva solo.
+> consolidamos de verdad. Si era para el jueves y ya pasó, déjalo: queda como `taught` y no
+> estorba.
 
 Las dos salidas son legítimas. Aprender algo a fondo porque salió una vez en una reunión es
 desperdiciar el tiempo igual que no haberlo aprendido.

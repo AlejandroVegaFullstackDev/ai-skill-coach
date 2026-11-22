@@ -87,7 +87,7 @@ que le digan de qué partes se compone.
 
 Dos comandos, y ninguno inventa nada de memoria.
 
-**`/add-domain <habilidad>`** investiga y escribe el paquete de dominio respondiendo cinco
+**`/add-domain <habilidad>`** investiga y escribe el paquete de dominio respondiendo siete
 preguntas:
 
 1. ¿Cuál es el salto real? No el temario: **dónde se atasca la gente**.
@@ -95,6 +95,8 @@ preguntas:
 3. ¿Cómo se practica esto de verdad? Qué hace falta, y si hay ruta sin equipamiento.
 4. ¿Cuál es el formato de mayor valor? El equivalente al simulacro de entrevista.
 5. ¿Hay escala o certificación reconocida, y qué mide de verdad?
+6. ¿Cómo se representa sin ambigüedad? La notación del oficio, en ASCII.
+7. ¿Con qué se verifica? El kit más barato que funcione, y qué queda fuera.
 
 Si no puede responder alguna con evidencia, **lo escribe como hueco** en vez de inventarla.
 

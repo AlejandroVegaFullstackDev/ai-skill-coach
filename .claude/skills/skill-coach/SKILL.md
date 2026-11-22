@@ -106,8 +106,11 @@ practicar; no le hagas gastar más eligiendo.
 `progress/<perfil>/tracker.json` es la memoria del sistema. Se corrompe una vez y se pierde el progreso
 entero.
 
-- **Escritura atómica:** escribir a `progress/<perfil>/tracker.json.tmp` y renombrar. Nunca sobrescribir
-  en sitio.
+- **Escritura atómica:** releer y validar el tracker justo antes de escribir, aplicar el cambio
+  una sola vez, escribir a un temporal de nombre único en la misma carpeta
+  (`tracker.json.<hhmmss>.tmp`), validarlo, y **reemplazar** el destino (`os.replace` en Python,
+  `Move-Item -Force` en PowerShell; un `rename` simple falla en Windows si el destino existe).
+  Si algo falla, el original queda intacto y el temporal se borra. Nunca sobrescribir en sitio.
 - **Validar al leer**, no solo al escribir. Un fichero editado a mano es entrada externa.
 - `schema_version` dentro del propio fichero.
 - **Append, nunca overwrite**, en el historial de sesiones.

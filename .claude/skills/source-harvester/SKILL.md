@@ -100,9 +100,10 @@ conflicts: []
 
 [Formulada para que se pueda convertir en ejercicio. No copiada: reformulada.]
 
-## Ejemplos que sirven para este aprendiz
+## Ejemplos
 
-[Adaptados a lo que el aprendiz conoce, de private/<perfil>/profile.md. No los del libro.]
+[Propios, no los del libro, y ficticios: esta ficha la comparten todos los perfiles de la
+habilidad. Nada sacado de private/. La adaptacion al aprendiz la hace /plan en ejercicios/<perfil>/.]
 
 ## Errores tipicos desde el espanol
 

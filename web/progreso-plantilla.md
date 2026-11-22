@@ -66,17 +66,17 @@
   EL TUTOR NO PUEDE VOLVER A ENSENARME ESTO. Solo repasarlo cuando toque.
 -->
 
-| Qué | Desde | Próximo repaso |
-|---|---|---|
-| | | |
+| Qué | Desde | Etapa de repaso (1-4) | Próximo repaso |
+|---|---|---|---|
+| | | | |
 
 ## Practicando
 
 <!-- Lo hago con errores o con ayuda. Aqui esta el trabajo de verdad. -->
 
-| Qué | Veces que ha fallado | Qué hice exactamente | Última vez |
-|---|---|---|---|
-| | | | |
+| Qué | Veces que ha fallado | Qué hice exactamente | Última vez | Aciertos espontáneos (fecha y frase) |
+|---|---|---|---|---|
+| | | | | |
 
 ## Explicado, nunca producido solo
 

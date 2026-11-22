@@ -59,7 +59,8 @@ Pendientes para la próxima: N
 ```
 
 - **Aprobado:** avanza al siguiente intervalo (2 → 7 → 21 → 60 días → archivado).
-- **Fallado:** baja a `practiced`, `review_stage` a cero, y se registra la frase exacta. Sin
+- **Fallado:** baja a `practiced`, `review_stage` y `due` a `null`, `correct_streak` a 0, y se
+  registra la frase exacta. Sin
   frase, no se degrada.
 
 Escritura atómica al tracker.

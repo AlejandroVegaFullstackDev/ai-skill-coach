@@ -52,8 +52,14 @@ Si escribe otra cosa, **no interpretar la intención**: repetir qué frase hace 
 
 Salvo que el usuario pida explícitamente que no:
 
-- `progress/<perfil>/tracker.json` → `progress/tracker.backup-<fecha>.json`
-- `private/<perfil>/profile.md` → `private/profile.backup-<fecha>.md`
+- `progress/<perfil>/tracker.json` → `progress/<perfil>/tracker.backup-<fecha>-<hhmmss>.json`
+- `private/<perfil>/profile.md` → `private/<perfil>/profile.backup-<fecha>-<hhmmss>.md`
+
+Si el nombre ya existe, no se sobrescribe: se elige otro. Leer el respaldo y comprobar que es
+válido **antes** de borrar el original.
+
+El respaldo va **dentro de la carpeta del perfil**: con varios perfiles, un respaldo suelto en
+`progress/` no dice de quién es y el siguiente `/reset` de otro perfil lo pisa el mismo día.
 
 Ambas carpetas están fuera de git, así que el respaldo es la única red que hay. Decir dónde quedó.
 
@@ -64,10 +70,10 @@ Ambas carpetas están fuera de git, así que el respaldo es la única red que ha
 | Objetivo | Qué se borra | Qué se conserva |
 |---|---|---|
 | `progress` | `progress/<perfil>/tracker.json` | Currículo, fichas, perfil |
-| `ejercicios` | `ejercicios/**/*.md` | El tracker, con sus ítems intactos |
-| `knowledge` | `knowledge/*.md` | `sources/` — el material crudo **nunca se toca** |
-| `profile` | `private/<perfil>/profile.md`, secciones de perfil en `01-`, `02-` y `CLAUDE.md` | El progreso |
-| `all` | Los cuatro | `sources/`, los `SKILL.md`, los comandos |
+| `ejercicios` | `ejercicios/<perfil>/` | El tracker, con sus ítems intactos, y los ejercicios de otros perfiles |
+| `knowledge` | `knowledge/<habilidad>/` de la habilidad del perfil activo | `sources/` — el material crudo **nunca se toca**. Si otro perfil comparte esa habilidad, avisar antes: las fichas son suyas también |
+| `profile` | `private/<perfil>/profile.md` | El progreso. `CLAUDE.md`, `01-` y `02-` no se tocan: no contienen datos de nadie |
+| `all` | `progress`, `ejercicios` y `profile` del perfil activo; `knowledge` solo si ningún otro perfil (activo o archivado) usa esa habilidad | `sources/`, los `SKILL.md`, los comandos, los demás perfiles |
 
 **`sources/` no se borra nunca.** Es material que el usuario aportó, a veces con esfuerzo. Si lo
 quiere fuera, lo borra él.
@@ -81,7 +87,7 @@ Los `SKILL.md` y los comandos tampoco: son el motor, no datos.
 Decir el estado resultante y el siguiente paso:
 
 > Borrado el progreso. El currículo y las fichas siguen ahí. Respaldo en
-> `progress/tracker.backup-2026-09-22.json`.
+> `progress/<perfil>/tracker.backup-2026-09-22-183012.json`.
 >
 > Para volver a empezar: `/assess`.
 
@@ -90,4 +96,4 @@ Decir el estado resultante y el siguiente paso:
 ## Cuándo no se usa
 
 Si el usuario quiere **cambiar de habilidad**, esto no es lo que necesita. El tracker es por
-habilidad: se archiva el actual y se empieza otro, sin borrar nada. Ofrecer eso en su lugar.
+habilidad: eso es un perfil nuevo (`/profile new`), sin borrar nada. Ofrecer eso en su lugar.

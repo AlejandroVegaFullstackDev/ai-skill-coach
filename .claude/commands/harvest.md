@@ -84,8 +84,10 @@ Las tres reglas:
 
 1. **Reformular, no copiar.** La ficha es la regla escrita para poder generar ejercicios. No un
    extracto. Copiar párrafos largos de material con derechos no se hace.
-2. **Ejemplos adaptados al aprendiz.** Los del libro se sustituyen por los suyos, tomados de
-   `private/<perfil>/profile.md`.
+2. **Ejemplos propios, no del libro, y sin datos de nadie.** `knowledge/<habilidad>/` lo
+   comparten todos los perfiles de esa habilidad: los ejemplos son ficticios y genéricos. La
+   personalización con `private/<perfil>/profile.md` ocurre en `/plan`, dentro de
+   `ejercicios/<perfil>/`.
 3. **Locator citable.** "Unidades 7-11", no "está en el libro".
 
 `confidence`: `alta` con dos fuentes independientes que coinciden, `media` con una fuente buena,

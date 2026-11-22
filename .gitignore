@@ -40,7 +40,14 @@ knowledge/*
 *.ogg
 *.webm
 *.mp4
+*.mov
+*.flac
+*.aac
+*.opus
 recordings/
+
+# Memoria del flujo web: es un tracker en Markdown
+progreso.md
 
 # Salida de analisis de pronunciacion (contiene transcripciones)
 *.pronunciation.json

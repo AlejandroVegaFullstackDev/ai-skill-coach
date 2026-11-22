@@ -14,15 +14,15 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch
 > aspecto tiene un paquete de dominio bien hecho. Si lo tuyo no es inglés, no lo borres: úsalo
 > como referencia y corre `/add-domain <tu habilidad>`.
 >
-> Las cinco preguntas que responde cualquier paquete están en
+> Las siete preguntas que responde cualquier paquete están en
 > `.claude/skills/skill-coach/08-domain-packs.md`. Este fichero las responde para el caso de un
 > hispanohablante que necesita hablar inglés en entrevistas técnicas.
 
 Este fichero **no es el motor**. El motor es `skill-coach`: él decide qué servir, cómo corregir y
 qué recordar. Aquí vive solo lo específico del dominio.
 
-Para entrenar otra habilidad se escribe un paquete equivalente y se cambia la sección "Habilidad
-activa" de `CLAUDE.md`. El motor no cambia.
+Para entrenar otra habilidad se escribe un paquete equivalente (`/add-domain`) y se crea un
+perfil para ella (`/profile new`). El motor no cambia.
 
 ---
 

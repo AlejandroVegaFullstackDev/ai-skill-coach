@@ -59,8 +59,9 @@ Después de cada sesión:
 
 ## Superados
 
-Cuando un ítem lleva tres sesiones sin aparecer y está `mastered`, se mueve a la sección de
-superados y **se le dice**.
+Cuando un ítem `mastered` aprueba el repaso de 60 días (`07-spaced-repetition.md`), se mueve a
+`mastered_archive` conservando su `id` y su evidencia, y **se le dice**. No aparecer no cuenta:
+no es evidencia de nada.
 
 Ver errores salir de la lista es la única señal visible de progreso que tiene. Es la parte del
 sistema que hace que vuelva, y cuesta una línea.

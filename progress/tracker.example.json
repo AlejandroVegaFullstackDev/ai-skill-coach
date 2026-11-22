@@ -49,7 +49,10 @@
       "last_seen": "2026-10-02",
       "fail_count": 1,
       "correct_streak": 2,
-      "evidence": [],
+      "evidence": [
+        "2026-09-28: nombro pinza, pastilla, disco y latiguillo sin ayuda al describir un ruido",
+        "2026-10-02: identifico los componentes en una averia real sin dudar"
+      ],
       "review_stage": 2,
       "due": "2026-10-09"
     },

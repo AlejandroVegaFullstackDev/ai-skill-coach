@@ -17,7 +17,7 @@ minutes: 10
 needs_voice: false
 needs_equipment: false
 requires_mastered: [sistema-de-frenos-componentes]
-sources: [knowledge/mec-frenos-diagnostico.md]
+sources: [knowledge/mecanica-motos/mec-frenos-diagnostico.md]
 mode: production
 ---
 

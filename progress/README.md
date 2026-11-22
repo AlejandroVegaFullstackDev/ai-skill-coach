@@ -85,9 +85,8 @@ el que haga `/reset` antes de borrar.
 
 ---
 
-## Si quieres versionarlo
+## Respaldo
 
-Es tuyo y es tu decisión. Si el repositorio es **privado**, quita `progress/*` de `.gitignore` y
-tendrás historial de tu evolución.
-
-Si es público, no lo hagas.
+No se versiona, ni en un repositorio privado: un fork, un cambio de visibilidad o un push al
+remoto equivocado lo publica entero. Si quieres historial, copia `progress/<perfil>/` a un
+sitio fuera del repositorio (disco, nube personal).
