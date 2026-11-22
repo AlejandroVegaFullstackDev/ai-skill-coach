@@ -298,21 +298,37 @@ Un perfil de aprendizaje dice en qué eres flojo. Un repositorio público es par
 
 ## Empezar
 
+Un paso. Clona el repo, comprueba que tus datos quedan fuera de git y abre Claude Code con
+`/setup`:
+
 ```bash
-git clone <este-repo> && cd ai-skill-coach
+# macOS / Linux / Git Bash
+curl -fsSL https://raw.githubusercontent.com/AlejandroVegaFullstackDev/ai-skill-coach/main/install.sh | bash
 ```
 
-Abre tu agente en la carpeta:
-
+```powershell
+# Windows PowerShell
+irm https://raw.githubusercontent.com/AlejandroVegaFullstackDev/ai-skill-coach/main/install.ps1 | iex
 ```
-/setup
+
+**Para actualizar, el mismo comando.** Trae el motor nuevo sin tocar `private/` ni `progress/`. Si
+tienes cambios en ficheros versionados —por ejemplo, un paquete que aprendió de tus sesiones y
+aún no has subido—, se para y te lo dice en vez de pisarlos. Si ya tienes perfil, abre con
+`/learn` en vez de `/setup`.
+
+A mano, si prefieres no ejecutar un script remoto (léelo antes: son menos de 100 líneas):
+
+```bash
+git clone https://github.com/AlejandroVegaFullstackDev/ai-skill-coach.git && cd ai-skill-coach
+claude "/setup"
 ```
 
 Te va a preguntar qué habilidad y **para qué exactamente**. No le des una respuesta vaga a la
 segunda: es la que ordena todo lo demás. *"Diagnosticar una avería por síntoma sin manual"* sirve;
 *"saber de mecánica"* no.
 
-Después `/add-domain` si tu habilidad no tiene paquete, y `/assess` para el nivel.
+Si tu habilidad no tiene paquete, `/setup` lo genera solo (`/add-domain` por dentro). Después,
+`/assess` para el nivel.
 
 Tus datos van a `private/<perfil>/`, que está fuera del control de versiones. **Ningún fichero
 versionado guarda nada tuyo**, ni siquiera resumido: `CLAUDE.md` solo apunta ahí. Puedes trabajar
