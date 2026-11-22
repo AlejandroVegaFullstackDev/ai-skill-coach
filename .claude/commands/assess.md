@@ -94,6 +94,12 @@ fracaso, es información que evita presentarse a algo prematuramente.
 
 Escritura atómica: temporal y renombrado.
 
+**Esta plantilla es solo para el alta.** En una re-medición el tracker ya existe y no se
+reconstruye: se conserva entero, la `baseline` anterior se copia a las `notes` de la nueva
+entrada de sesión, se actualiza `baseline`, los ítems se fusionan por `id` sin perder
+evidencia ni estado (un `mastered` solo baja con fallo literal observado aquí) y la sesión se
+añade al final. `sessions` y `mastered_archive` nunca se vacían.
+
 ```json
 {
   "schema_version": 1,

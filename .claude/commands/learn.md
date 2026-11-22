@@ -116,16 +116,23 @@ Todos los errores, no una muestra. Ninguno inventado. No mejorar lo que ya estab
 Escritura atómica a `progress/<perfil>/tracker.json`:
 
 - Error nuevo → crear ítem con la **frase exacta** en `evidence`
-- Error repetido → `fail_count++`, actualizar `last_seen`
-- Producción correcta espontánea de un `practiced` → `correct_streak++`; a `mastered` **solo al
+- Error repetido → `fail_count++`, `correct_streak = 0`, actualizar `last_seen`
+- Producción correcta espontánea de un `practiced` → `correct_streak++`, como mucho una vez por
+  ítem y sesión; a `mastered` **solo al
   llegar a 2 en sesiones distintas**, y entonces fijar `review_stage: 1` y `due: +2 días`
-- Fallo de un `mastered` → baja a `practiced` **con la frase que lo evidencia**. Sin frase, no se
-  degrada
-- Ítem correcto que estaba programado para repaso → repaso aprobado, siguiente intervalo
+- Fallo de un `mastered` → baja a `practiced` **con la frase que lo evidencia**, `correct_streak`
+  a 0, `review_stage` y `due` a `null`. Sin frase, no se degrada
+- Uso correcto y espontáneo de un `mastered`, **vencido o no** → repaso aprobado: avanza una
+  sola etapa por sesión y el siguiente `due` se calcula desde hoy (`07-spaced-repetition.md`)
 - Añadir la entrada de sesión al historial. **Append, nunca overwrite**
 
-Si un ítem pasa a `mastered`, **decírselo**. Y si alguno lleva tres sesiones sin aparecer, moverlo
-a `mastered_archive` y nombrarlo. Ver errores salir de la lista es la única señal visible de
+Después de escribir el tracker: aplicar **Cómo aprende el paquete solo**
+(`.claude/skills/skill-coach/08-domain-packs.md`). Como mucho un patrón nuevo por sesión, sin
+datos del aprendiz, y avisándolo en el cierre.
+
+Si un ítem pasa a `mastered`, **decírselo**. Y si un `mastered` aprueba el repaso de 60 días,
+moverlo a `mastered_archive` y nombrarlo (`07-spaced-repetition.md`). Un ítem que simplemente no
+aparece no se archiva: no aparecer no es evidencia de dominio. Ver errores salir de la lista es la única señal visible de
 progreso que tiene.
 
 ---

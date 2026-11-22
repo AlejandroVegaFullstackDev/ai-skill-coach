@@ -21,8 +21,9 @@ un paquete de dominio que `/add-domain` genera para lo que le pidas.
 montaje, no hace falta programar ni saber qué es git. Pegas las instrucciones en un proyecto y
 llevas tu progreso en un fichero.
 
-**Con terminal**, si ya usas un agente de código: clona el repo y sigue leyendo. Los ejercicios
-se pre-generan, practicar no consume nada y el estado se guarda solo.
+**Con terminal**, si ya usas un agente de código: un comando lo instala (ver [Empezar](#empezar)).
+Funciona en **Claude Code**, **Codex** y dentro de **Orca**, con cualquiera de los dos. Los
+ejercicios se pre-generan, practicar no consume nada y el estado se guarda solo.
 
 Las dos comparten lo que importa: que no te vuelva a enseñar lo que ya sabes, que te corrija de
 verdad y que no te infle el nivel.
@@ -87,7 +88,7 @@ que le digan de qué partes se compone.
 
 Dos comandos, y ninguno inventa nada de memoria.
 
-**`/add-domain <habilidad>`** investiga y escribe el paquete de dominio respondiendo cinco
+**`/add-domain <habilidad>`** investiga y escribe el paquete de dominio respondiendo siete
 preguntas:
 
 1. ¿Cuál es el salto real? No el temario: **dónde se atasca la gente**.
@@ -95,6 +96,8 @@ preguntas:
 3. ¿Cómo se practica esto de verdad? Qué hace falta, y si hay ruta sin equipamiento.
 4. ¿Cuál es el formato de mayor valor? El equivalente al simulacro de entrevista.
 5. ¿Hay escala o certificación reconocida, y qué mide de verdad?
+6. ¿Cómo se representa sin ambigüedad? La notación del oficio, en ASCII.
+7. ¿Con qué se verifica? El kit más barato que funcione, y qué queda fuera.
 
 Si no puede responder alguna con evidencia, **lo escribe como hueco** en vez de inventarla.
 
@@ -296,21 +299,37 @@ Un perfil de aprendizaje dice en qué eres flojo. Un repositorio público es par
 
 ## Empezar
 
+Un paso. Clona el repo, comprueba que tus datos quedan fuera de git y abre Claude Code con
+`/setup`:
+
 ```bash
-git clone <este-repo> && cd ai-skill-coach
+# macOS / Linux / Git Bash
+curl -fsSL https://raw.githubusercontent.com/AlejandroVegaFullstackDev/ai-skill-coach/main/install.sh | bash
 ```
 
-Abre tu agente en la carpeta:
-
+```powershell
+# Windows PowerShell
+irm https://raw.githubusercontent.com/AlejandroVegaFullstackDev/ai-skill-coach/main/install.ps1 | iex
 ```
-/setup
+
+**Para actualizar, el mismo comando.** Trae el motor nuevo sin tocar `private/` ni `progress/`. Si
+tienes cambios en ficheros versionados —por ejemplo, un paquete que aprendió de tus sesiones y
+aún no has subido—, se para y te lo dice en vez de pisarlos. Si ya tienes perfil, abre con
+`/learn` en vez de `/setup`.
+
+A mano, si prefieres no ejecutar un script remoto (léelo antes: son menos de 100 líneas):
+
+```bash
+git clone https://github.com/AlejandroVegaFullstackDev/ai-skill-coach.git && cd ai-skill-coach
+claude "/setup"
 ```
 
 Te va a preguntar qué habilidad y **para qué exactamente**. No le des una respuesta vaga a la
 segunda: es la que ordena todo lo demás. *"Diagnosticar una avería por síntoma sin manual"* sirve;
 *"saber de mecánica"* no.
 
-Después `/add-domain` si tu habilidad no tiene paquete, y `/assess` para el nivel.
+Si tu habilidad no tiene paquete, `/setup` lo genera solo (`/add-domain` por dentro). Después,
+`/assess` para el nivel.
 
 Tus datos van a `private/<perfil>/`, que está fuera del control de versiones. **Ningún fichero
 versionado guarda nada tuyo**, ni siquiera resumido: `CLAUDE.md` solo apunta ahí. Puedes trabajar

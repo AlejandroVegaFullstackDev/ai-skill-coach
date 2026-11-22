@@ -111,7 +111,8 @@ en las dos.
 
 ## Si algún día te pasas a la terminal
 
-Tu `progreso.md` sirve tal cual. El repo lo lee y lo convierte a su formato interno. No pierdes
-nada de lo acumulado.
+Tu `progreso.md` sirve como evidencia para `/setup` y `/assess`: el agente lo lee y no te vuelve
+a enseñar lo que ya tiene marcado como dominado. La conversión automática al tracker todavía no
+está implementada.
 
 Ver el [README principal](../README.md).

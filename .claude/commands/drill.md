@@ -13,7 +13,12 @@ machacarlo, o cuando un ítem lleva semanas sin moverse.
 
 ## Paso 1: Elegir el objetivo
 
-Con argumento: ese ítem. Si no existe en el tracker, crearlo como `unseen` y decirlo.
+Con argumento: buscar el id en `items` **y en `mastered_archive`**.
+
+- Si está `mastered` o archivado: no se entrena. Decir su estado y su próximo repaso, y ofrecer el
+  ítem más fallado. Si hubo un fallo real reciente, se registra primero con `/log` (con la frase)
+  y entonces sí baja a `practiced` y se puede drillear.
+- Si no existe en ninguno: crearlo como `unseen` y decirlo.
 
 Sin argumento: el ítem con mayor `fail_count` que no esté `mastered`. Nombrarlo y explicar por qué
 en una línea: *"este se te ha ido 5 veces desde el 22 de septiembre"*.
@@ -72,3 +77,7 @@ producir bien diez veces seguidas justo después de la explicación mide memoria
 ascenso necesita producción espontánea en una sesión distinta.
 
 Sí puede subir `taught` → `practiced`.
+
+Después de escribir el tracker: aplicar **Cómo aprende el paquete solo**
+(`.claude/skills/skill-coach/08-domain-packs.md`). Como mucho un patrón nuevo por sesión, sin
+datos del aprendiz, y avisándolo en el cierre.

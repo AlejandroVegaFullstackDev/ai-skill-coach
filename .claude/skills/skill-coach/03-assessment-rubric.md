@@ -77,22 +77,19 @@ solo el resultado.
 
 ## Qué produce `/assess`
 
-```yaml
-skill: mecanica-basica
-measured_at: 2026-09-22
-scale_external: null
+El bloque `baseline` de `progress/<perfil>/tracker.json` (esquema completo en
+`progress/tracker.example.json`):
 
-reception:
-  diagnostico-por-sonido: L2   # identifico el ruido de pastillas, fallo el de rodamiento
-  lectura-de-esquemas: L1      # reconoce los simbolos, no sigue el circuito
-
-production:
-  cambio-de-pastillas: L2      # lo hizo con instrucciones delante, dos pasos fuera de orden
-  diagnostico-completo: L1     # no llego a una hipotesis sin ayuda
-
-overall: L2
-evidence_source: sesion practica de 40 min, 2026-09-22, grabada
+```json
+"baseline": {
+  "measured_at": "2026-09-22",
+  "production": { "cambio-de-pastillas": "L2", "diagnostico-completo": "L1" },
+  "reception":  { "diagnostico-por-sonido": "L2", "lectura-de-esquemas": "L1" },
+  "evidence": "sesion practica de 40 min, grabada: identifico el ruido de pastillas, fallo el de rodamiento; cambio de pastillas con instrucciones, dos pasos fuera de orden; no llego a una hipotesis sin ayuda"
+}
 ```
+
+Si existe escala externa, va dentro de `evidence` con **qué midió**, no como un número suelto.
 
 Sin el campo de evidencia, la entrada no es válida.
 

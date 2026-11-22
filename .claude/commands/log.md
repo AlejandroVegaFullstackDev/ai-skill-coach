@@ -31,16 +31,18 @@ sufrió.
 
 Cada bloqueo se traduce a un ítem del tracker.
 
-- Si el ítem existe → `fail_count++`, añadir la frase, actualizar `last_seen`.
-- Si existe y estaba `mastered` → **baja a `practiced`**. Un fallo en uso real pesa más que
+- Si el ítem existe → `fail_count++`, `correct_streak = 0`, añadir la frase, actualizar `last_seen`.
+- Si existe y estaba `mastered` → **baja a `practiced`**, con `review_stage` y `due` a `null`. Un fallo en uso real pesa más que
   cualquier repaso aprobado.
 - Si no existe → crear como `practiced` con la evidencia.
 
 Lo que salió bien también cuenta: un ítem producido correctamente bajo presión real es la mejor
-evidencia posible. `correct_streak++`, y si llega a 2, a `mastered`.
+evidencia posible. `correct_streak++` (como mucho **uno por ítem y por sesión**), y si llega a 2
+en sesiones distintas, a `mastered` con `review_stage: 1` y `due: hoy + 2 días`. Si ya era
+`mastered`, cuenta como repaso aprobado: siguiente etapa.
 
-**Uso real pesa más que práctica.** Un acierto en una entrevista vale por dos en un ejercicio, y
-un fallo también.
+**Uso real pesa más que práctica** en la evidencia y en lo que se prioriza, pero no se cuenta
+doble: un acierto es un acierto. Dos en la misma entrevista siguen siendo una sesión.
 
 ---
 
@@ -70,6 +72,11 @@ Si muestra que estaba bajo, también.
 ## Paso 4: Recalibrar
 
 Escribir el tracker (atómico) y añadir la entrada al historial con `command: "log"`.
+
+Después de escribir el tracker: aplicar **Cómo aprende el paquete solo**
+(`.claude/skills/skill-coach/08-domain-packs.md`). Como mucho un patrón nuevo por sesión, sin
+datos del aprendiz, y avisándolo en el cierre.
+Un bloqueo en uso real es la mejor señal que tiene este paso.
 
 Si el registro cambia las prioridades de forma apreciable, decirlo y mandar a `/plan`:
 

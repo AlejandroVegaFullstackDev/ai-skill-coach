@@ -102,7 +102,10 @@ Ese recordatorio es lo que hace que retomar un perfil dormido no se sienta como 
 
 ## `/profile archive <nombre>` — apartar
 
-Mueve `private/<nombre>/` y `progress/<nombre>/` a `<...>/archived/<nombre>/`.
+Mueve juntos `private/<nombre>/`, `progress/<nombre>/` y `ejercicios/<nombre>/` (los que
+existan) a `<...>/archived/<nombre>/`. Antes, comprobar que ningún destino existe ya; si un
+traslado falla a medias, devolver lo movido y decirlo. Mientras esté archivado, el nombre no se
+reutiliza para un perfil nuevo: heredaría los ejercicios de otra persona.
 
 **No borra nada.** Para borrar está `/reset`, que pide confirmación literal.
 

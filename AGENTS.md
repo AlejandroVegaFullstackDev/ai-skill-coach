@@ -40,7 +40,9 @@ Claude. Cualquier agente debe seguirlo.
 
 ## Las reglas que no se negocian
 
-1. **Lee `private/active` primero**, luego `private/<perfil>/profile.md` y
+1. **Resuelve la raíz de datos** —`dirname "$(git rev-parse --path-format=absolute --git-common-dir)"`—
+   y lee desde ahí: en un worktree (Orca, Codex en paralelo) `private/` y `progress/` no existen,
+   viven en el checkout principal. Después **lee `private/active`**, luego `private/<perfil>/profile.md` y
    `progress/<perfil>/tracker.json`. Si no hay perfil activo, para y manda a `/setup`.
 2. **Un ítem en `mastered` no se vuelve a enseñar.** Esa es la razón de existir del repo.
 3. **Nada personal en un fichero versionado.** Ni el nombre, ni la habilidad, ni el objetivo, ni
@@ -64,6 +66,35 @@ Claude. Cualquier agente debe seguirlo.
     leer. Se corrompe una vez y se pierde el progreso de ese perfil.
 
 ## Cómo arranca una sesión
+
+Funciona igual en Claude Code, Codex, Orca o cualquier agente que lea ficheros. Los comandos son
+procedimientos en Markdown; el agente que no tenga slash commands los ejecuta por nombre.
+
+| Escribes | El agente lee y sigue |
+|---|---|
+| `setup` | `.claude/commands/setup.md` |
+| `add-domain <habilidad>` | `.claude/commands/add-domain.md` |
+| `assess` | `.claude/commands/assess.md` |
+| `harvest` | `.claude/commands/harvest.md` |
+| `plan` | `.claude/commands/plan.md` |
+| `learn <tiempo y condiciones>` | `.claude/commands/learn.md` |
+| `log <qué pasó>` | `.claude/commands/log.md` |
+| `drill <ítem>` | `.claude/commands/drill.md` |
+| `review` | `.claude/commands/review.md` |
+| `crash <tema>` | `.claude/commands/crash.md` |
+| `profile <acción>` | `.claude/commands/profile.md` |
+| `reset <objetivo>` | `.claude/commands/reset.md` |
+
+Con barra o sin ella, en el mensaje del usuario, significa lo mismo. En Codex conviene escribirlo
+**sin barra**: `/setup` lo intercepta el propio cliente como comando suyo.
+
+Los paquetes de dominio están en `.claude/skills/<habilidad>-coach/SKILL.md`. Un agente que no
+cargue skills solo los lee: leer el del perfil activo es parte de cargar estado.
+
+**Preguntas con opciones.** `CLAUDE.md` pide `AskUserQuestion`. Si el agente no la tiene, la misma
+regla en texto: una pregunta, opciones numeradas, la recomendada primera. Nunca un bloque de
+cinco preguntas.
+
 
 ```
 /learn tengo 17 minutos, no puedo hablar en voz alta
