@@ -21,8 +21,9 @@ un paquete de dominio que `/add-domain` genera para lo que le pidas.
 montaje, no hace falta programar ni saber qué es git. Pegas las instrucciones en un proyecto y
 llevas tu progreso en un fichero.
 
-**Con terminal**, si ya usas un agente de código: clona el repo y sigue leyendo. Los ejercicios
-se pre-generan, practicar no consume nada y el estado se guarda solo.
+**Con terminal**, si ya usas un agente de código: un comando lo instala (ver [Empezar](#empezar)).
+Funciona en **Claude Code**, **Codex** y dentro de **Orca**, con cualquiera de los dos. Los
+ejercicios se pre-generan, practicar no consume nada y el estado se guarda solo.
 
 Las dos comparten lo que importa: que no te vuelva a enseñar lo que ya sabes, que te corrija de
 verdad y que no te infle el nivel.

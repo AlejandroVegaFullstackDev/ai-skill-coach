@@ -18,7 +18,8 @@ recordar.
 
 ## Antes de cualquier cosa: cargar estado
 
-Leer siempre, en este orden, antes de proponer nada:
+Leer siempre, en este orden, antes de proponer nada. Las rutas son relativas a **la raíz de
+datos** (`CLAUDE.md`): en un worktree, el checkout principal, no la carpeta actual.
 
 1. `private/active` — el nombre del perfil activo. Si no existe o está vacío, **no hay perfil**:
    parar y mandar a `/setup`.

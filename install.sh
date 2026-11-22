@@ -55,20 +55,48 @@ else
   NEXT="/setup"
 fi
 
-if ! command -v claude >/dev/null 2>&1; then
-  say ""
-  say "Listo. Falta Claude Code: https://docs.claude.com/en/docs/claude-code"
-  say "Despues: cd $DIR && claude \"$NEXT\""
-  exit 0
+# Orca: registrar el proyecto para que aparezca en la barra lateral. Si Orca no esta
+# instalado o no esta abierto, no pasa nada: se dice y se sigue.
+ORCA_BIN="${ORCA_CLI_COMMAND:-orca}"
+# En Git Bash, pwd da /c/...; Orca en Windows necesita C:/... (pwd -W).
+HERE="$(pwd -W 2>/dev/null || pwd)"
+if [ "${SKILL_COACH_NO_ORCA:-}" != "1" ] && command -v "$ORCA_BIN" >/dev/null 2>&1 \
+   && "$ORCA_BIN" --help 2>/dev/null | grep -q "repo add"; then
+  if "$ORCA_BIN" repo add --path "$HERE" --json >/dev/null 2>&1; then
+    say "Registrado en Orca. Abrelo sobre el checkout principal, no en un worktree nuevo."
+  else
+    say "Orca esta instalado pero no se pudo registrar (puede que no este abierto)."
+    say "  Luego: orca repo add --path \"$HERE\""
+  fi
 fi
+
+# Agente: SKILL_COACH_AGENT=claude|codex. Por defecto, el primero que haya.
+AGENT="${SKILL_COACH_AGENT:-}"
+if [ -z "$AGENT" ]; then
+  if command -v claude >/dev/null 2>&1; then AGENT=claude
+  elif command -v codex >/dev/null 2>&1; then AGENT=codex
+  fi
+fi
+
+case "$AGENT" in
+  claude) LAUNCH=(claude "$NEXT") ;;
+  # Codex intercepta /comandos: se le pasa el procedimiento por nombre (ver AGENTS.md).
+  codex)  LAUNCH=(codex "Lee AGENTS.md y sigue el procedimiento de .claude/commands/${NEXT#/}.md") ;;
+  "")
+    say ""
+    say "Listo. Falta un agente: Claude Code (https://docs.claude.com/en/docs/claude-code) o Codex."
+    say "Despues: cd $DIR && claude \"$NEXT\"   (en Codex escribe: ${NEXT#/})"
+    exit 0 ;;
+  *) fail "SKILL_COACH_AGENT=$AGENT no soportado. Usa claude o codex." ;;
+esac
 
 if [ "${SKILL_COACH_NO_LAUNCH:-}" = "1" ] || [ ! -e /dev/tty ]; then
   say ""
-  say "Listo. Para empezar: cd $DIR && claude \"$NEXT\""
+  say "Listo. Para empezar: cd $DIR && ${LAUNCH[0]} \"${LAUNCH[1]}\""
   exit 0
 fi
 
 say ""
-say "Abriendo Claude Code con $NEXT..."
+say "Abriendo $AGENT con ${NEXT#/}..."
 # Con curl | bash, stdin es el script: el agente necesita la terminal real.
-exec claude "$NEXT" </dev/tty
+exec "${LAUNCH[@]}" </dev/tty

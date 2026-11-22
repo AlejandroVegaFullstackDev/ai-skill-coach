@@ -62,20 +62,46 @@
         Write-Host "Perfil activo: $((Get-Content 'private/active' -TotalCount 1)). Siguiente: /learn"
     }
 
-    if (-not (Get-Command claude -ErrorAction SilentlyContinue)) {
-        Write-Host ''
-        Write-Host 'Listo. Falta Claude Code: https://docs.claude.com/en/docs/claude-code'
-        Write-Host "Despues: cd $dir; claude `"$next`""
-        return
+    # Orca: registrar el proyecto. Si no esta instalado o abierto, se dice y se sigue.
+    $orcaBin = if ($env:ORCA_CLI_COMMAND) { $env:ORCA_CLI_COMMAND } else { 'orca' }
+    if ($env:SKILL_COACH_NO_ORCA -ne '1' -and (Get-Command $orcaBin -ErrorAction SilentlyContinue)) {
+        $here = (Get-Location).Path
+        & $orcaBin repo add --path $here --json *> $null
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host 'Registrado en Orca. Abrelo sobre el checkout principal, no en un worktree nuevo.'
+        } else {
+            Write-Host 'Orca esta instalado pero no se pudo registrar (puede que no este abierto).'
+            Write-Host "  Luego: orca repo add --path `"$here`""
+        }
+    }
+
+    # Agente: $env:SKILL_COACH_AGENT = claude|codex. Por defecto, el primero que haya.
+    $agent = $env:SKILL_COACH_AGENT
+    if (-not $agent) {
+        if (Get-Command claude -ErrorAction SilentlyContinue) { $agent = 'claude' }
+        elseif (Get-Command codex -ErrorAction SilentlyContinue) { $agent = 'codex' }
+    }
+    $cmdName = $next.TrimStart('/')
+    switch ($agent) {
+        'claude' { $prompt = $next }
+        # Codex intercepta /comandos: se le pasa el procedimiento por nombre (ver AGENTS.md).
+        'codex'  { $prompt = "Lee AGENTS.md y sigue el procedimiento de .claude/commands/$cmdName.md" }
+        { -not $_ } {
+            Write-Host ''
+            Write-Host 'Listo. Falta un agente: Claude Code (https://docs.claude.com/en/docs/claude-code) o Codex.'
+            Write-Host "Despues: cd $dir; claude `"$next`"   (en Codex escribe: $cmdName)"
+            return
+        }
+        default { Fail "SKILL_COACH_AGENT=$agent no soportado. Usa claude o codex."; return }
     }
 
     if ($env:SKILL_COACH_NO_LAUNCH -eq '1') {
         Write-Host ''
-        Write-Host "Listo. Para empezar: cd $dir; claude `"$next`""
+        Write-Host "Listo. Para empezar: cd $dir; $agent `"$prompt`""
         return
     }
 
     Write-Host ''
-    Write-Host "Abriendo Claude Code con $next..."
-    claude $next
+    Write-Host "Abriendo $agent con $cmdName..."
+    & $agent $prompt
 }

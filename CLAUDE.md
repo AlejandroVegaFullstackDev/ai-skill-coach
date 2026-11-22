@@ -26,8 +26,26 @@ público, negociación: lo que cambia es el paquete de dominio, no el sistema.
 **Este fichero no contiene datos de nadie, y no debe contenerlos nunca.** Está versionado y se
 publica. Todo lo personal vive fuera del control de versiones.
 
+### La raíz de datos: worktrees (Orca y similares)
+
+`private/`, `progress/`, `ejercicios/`, `knowledge/` y `sources/` están fuera de git, así que **no
+existen en un worktree**. Orca y otros orquestadores abren cada agente en uno, y ahí
+`private/active` no está: el agente mandaría a `/setup` y partiría el progreso en dos.
+
+Antes de leer nada, resolver la raíz de datos:
+
+```bash
+dirname "$(git rev-parse --path-format=absolute --git-common-dir)"
+```
+
+Es el checkout principal, se esté en él o en un worktree. **Todas las rutas de datos de este
+fichero y de los comandos son relativas a esa raíz**, no a la carpeta actual. Nunca crear
+`private/` ni `progress/` dentro de un worktree. Si el comando no funciona (no es un repo git),
+la raíz es la carpeta actual.
+
 Al empezar cualquier comando:
 
+0. Resolver la raíz de datos (arriba).
 1. Leer `private/active` — una línea con el nombre del perfil activo.
 2. Leer `private/<perfil>/profile.md` — quién es, qué habilidad, qué objetivo, qué restricciones.
 3. Leer `progress/<perfil>/tracker.json` — qué ya está dominado.
