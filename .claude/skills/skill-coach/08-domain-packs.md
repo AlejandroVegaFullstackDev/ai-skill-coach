@@ -146,6 +146,13 @@ Este fichero no es el motor. El motor es `skill-coach`.
 
 ## Contenido de practica
 [De donde sale. Casi siempre: la vida real del aprendiz, de private/<perfil>/profile.md.]
+
+## Observado en sesiones
+| Patron | Correcto | Por que importa | Desde | Estado |
+|---|---|---|---|---|
+
+## Huecos
+[Lo que no se pudo confirmar, y lo que contradijo una fuente.]
 ```
 
 ---
@@ -160,8 +167,80 @@ vienen del razonamiento del agente sobre el idioma o el contexto de origen, se m
 "Suele pasar" sin respaldo es una suposición con voz de autoridad.
 
 **Un paquete se corrige con el uso.** La tabla de errores típicos del principio es un punto de
-partida; los errores reales del aprendiz salen de las sesiones y viven en el tracker. Si después
-de 20 sesiones la tabla no ha cambiado, nadie estaba mirando.
+partida; los errores reales salen de las sesiones. El procedimiento está abajo, en **Cómo aprende
+el paquete solo**.
+
+---
+
+## Cómo aprende el paquete solo
+
+El paquete inicial es una hipótesis escrita antes de ver a nadie practicar. Las sesiones son la
+mejor fuente que existe sobre dónde se atasca la gente, y sin este paso esa información se queda
+encerrada en un tracker. Se corre **al final de `/learn`, `/log` y `/drill`**, después de escribir
+el tracker. No es un comando aparte: si hay que acordarse de correrlo, no se corre.
+
+### Cuándo entra un patrón
+
+Las cuatro condiciones, todas:
+
+1. Un ítem del tracker tiene evidencia de fallo en **dos sesiones distintas o más**. Un fallo
+   suelto es ruido; dos en días distintos es un patrón.
+2. El patrón **no está ya** en la tabla de errores típicos ni en `Observado en sesiones`, ni dicho
+   de otra forma. Leer las dos antes de escribir.
+3. Es un error **del dominio**, no de la persona: le podría pasar a otro con el mismo punto de
+   partida. "Para la mano derecha al cambiar de acorde" sí; "no practica los martes" no.
+4. Se puede escribir sin datos del aprendiz (ver abajo). Si no se puede, no entra.
+
+**Como mucho uno por sesión.** Un paquete que crece cinco filas por sesión se convierte en un
+diario, y deja de servir para priorizar.
+
+### Cómo se escribe: el paquete es público
+
+El paquete está versionado y se publica. Lo que entra es el **patrón generalizado**, nunca la
+evidencia:
+
+| En el tracker (privado) | En el paquete (público) |
+|---|---|
+| La frase literal, la canción, el proyecto, la fecha exacta | El patrón, en abstracto |
+| "En el puente de [canción] paró la mano derecha 3 veces" | "Para la mano derecha en el cambio que más le cuesta, aunque el resto lo toque seguido" |
+
+La prueba: **¿podría alguien que lea el paquete saber algo de esta persona?** Si sí, se reescribe
+o no entra. Nada de nombres, canciones, empresas, proyectos, ciudades ni frases literales.
+
+Va a la sección `## Observado en sesiones` del paquete, no a la tabla principal:
+
+```markdown
+| Patron | Correcto | Por que importa | Desde | Estado |
+|---|---|---|---|---|
+| [el error, generalizado] | [la forma correcta] | [la consecuencia] | AAAA-MM | observado |
+```
+
+`Desde` lleva solo año y mes. `Estado` es siempre `observado` al entrar.
+
+### Cómo se confirma o se cae
+
+| Estado | Significa | Quién lo cambia |
+|---|---|---|
+| `observado` | Salió en sesiones, sin fuente externa | Este paso |
+| `confirmado` | `/harvest` encontró fuente: la fila sube a la tabla de errores típicos, citando `knowledge/<habilidad>/<ficha>.md`, y sale de esta sección | `/harvest` |
+| `contradicho` | Una fuente buena dice lo contrario: la fila se borra y se anota en `Huecos` con el motivo | `/harvest` |
+
+Una fila `observado` vale como hipótesis para **otros** perfiles de la misma habilidad: se
+vigila en ellos, no se da por hecha.
+
+### Lo que no hace
+
+- **No reescribe** la tabla principal ni contradice lo que ya tiene fuente. Si la sesión choca
+  con una fila citada, eso se anota en `Huecos` y se le dice al usuario; no se pisa.
+- **No hace commit.** El paquete cambia en disco y se le dice al usuario en el cierre de la
+  sesión, en una línea: *"Añadí al paquete de guitarra: [patrón]. Revísalo antes de subirlo."*
+  Publicar es decisión suya.
+- **No toca el motor** (`skill-coach/`) ni `CLAUDE.md`.
+- Para no contar dos veces la misma aportación, la entrada de sesión del tracker lleva en
+  `notes`: `aportado al paquete: <patrón>`.
+
+Si después de 20 sesiones `Observado en sesiones` sigue vacía y el aprendiz falla cosas, este
+paso no se está corriendo.
 
 ---
 

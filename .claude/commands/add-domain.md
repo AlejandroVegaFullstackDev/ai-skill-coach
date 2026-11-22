@@ -138,5 +138,9 @@ Verificar la checklist de `CLAUDE.md` y cerrar:
 
 El paquete inicial es una hipótesis. Los errores reales del aprendiz salen de las sesiones.
 
-Cuando `/log` o `/learn` revelen un patrón que la tabla no tenía, **añadirlo al paquete**, no solo
-al tracker. El paquete es lo que se comparte; el tracker es de una persona.
+`/learn`, `/log` y `/drill` añaden solos los patrones que se repiten, generalizados y sin datos
+de nadie, a `## Observado en sesiones`; `/harvest` los confirma o los tira. El procedimiento
+está en `08-domain-packs.md`, **Cómo aprende el paquete solo**. El paquete es lo que se comparte;
+el tracker es de una persona.
+
+Todo paquete nuevo nace con las secciones `## Observado en sesiones` (vacía) y `## Huecos`.

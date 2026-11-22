@@ -299,6 +299,16 @@ sustituirla en silencio por otra mas facil.
 
 ---
 
+## Observado en sesiones
+
+Patrones que salieron en sesiones reales, generalizados y sin datos de nadie. Hipotesis hasta que
+`/harvest` les encuentre fuente. Reglas en `skill-coach/08-domain-packs.md`.
+
+| Patron | Correcto | Por que importa | Desde | Estado |
+|---|---|---|---|---|
+
+---
+
 ## Huecos de este paquete
 
 - **No verificado con fuente:** si posponer la cejilla en favor de power chords retrasa el

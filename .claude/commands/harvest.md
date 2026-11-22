@@ -101,6 +101,11 @@ Las tres reglas:
 - Ítem que sigue sin ficha → dejarlo listado como hueco pendiente. **No inventar la ficha.**
 - Ficha que cubre un ítem `mastered` → se guarda igual, sirve para los repasos.
 
+Y con el paquete de dominio: cada fila `observado` de `## Observado en sesiones` es un hueco con
+prioridad en el Paso 3. Si aparece fuente, la fila sube a la tabla de errores típicos citando la
+ficha (`confirmado`); si una fuente buena la contradice, se borra y se anota en `Huecos`. Si no
+aparece nada, se queda como está. Reglas en `08-domain-packs.md`, **Cómo aprende el paquete solo**.
+
 ---
 
 ## Paso 6: Reportar

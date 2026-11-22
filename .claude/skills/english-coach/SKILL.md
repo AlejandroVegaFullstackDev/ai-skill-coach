@@ -191,3 +191,13 @@ historia que no vivió se cae en la segunda pregunta.
 
 Este es también el motivo por el que la práctica de idioma para entrevistas rinde doble: cada
 frase que produce es un ensayo de la respuesta real.
+
+---
+
+## Observado en sesiones
+
+Patrones que salieron en sesiones reales, generalizados y sin datos de nadie. Hipotesis hasta que
+`/harvest` les encuentre fuente. Reglas en `skill-coach/08-domain-packs.md`.
+
+| Patron | Correcto | Por que importa | Desde | Estado |
+|---|---|---|---|---|

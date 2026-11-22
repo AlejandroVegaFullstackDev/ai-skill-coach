@@ -193,6 +193,8 @@ Al terminar cualquier comando que escriba ficheros, verificar y reportar como li
 - [ ] Nada personal fuera de `private/` y `progress/`, **ni siquiera resumido**
 - [ ] `git status` no muestra ficheros de esas carpetas pendientes de añadir
 - [ ] Ninguna ruta de audio apunta dentro del árbol versionado
+- [ ] Lo añadido a un paquete de dominio es un patrón generalizado: sin frases literales, nombres,
+      canciones, proyectos ni nada que identifique al aprendiz
 
 ### Honestidad
 - [ ] El nivel reportado se sostiene con la evidencia, no con optimismo

@@ -73,6 +73,11 @@ Si muestra que estaba bajo, también.
 
 Escribir el tracker (atómico) y añadir la entrada al historial con `command: "log"`.
 
+Después de escribir el tracker: aplicar **Cómo aprende el paquete solo**
+(`.claude/skills/skill-coach/08-domain-packs.md`). Como mucho un patrón nuevo por sesión, sin
+datos del aprendiz, y avisándolo en el cierre.
+Un bloqueo en uso real es la mejor señal que tiene este paso.
+
 Si el registro cambia las prioridades de forma apreciable, decirlo y mandar a `/plan`:
 
 > Esto cambia el orden. Lo de condicionales pasó a ser lo primero. Corre `/plan` cuando puedas.

@@ -77,3 +77,7 @@ producir bien diez veces seguidas justo después de la explicación mide memoria
 ascenso necesita producción espontánea en una sesión distinta.
 
 Sí puede subir `taught` → `practiced`.
+
+Después de escribir el tracker: aplicar **Cómo aprende el paquete solo**
+(`.claude/skills/skill-coach/08-domain-packs.md`). Como mucho un patrón nuevo por sesión, sin
+datos del aprendiz, y avisándolo en el cierre.

@@ -126,6 +126,10 @@ Escritura atómica a `progress/<perfil>/tracker.json`:
   sola etapa por sesión y el siguiente `due` se calcula desde hoy (`07-spaced-repetition.md`)
 - Añadir la entrada de sesión al historial. **Append, nunca overwrite**
 
+Después de escribir el tracker: aplicar **Cómo aprende el paquete solo**
+(`.claude/skills/skill-coach/08-domain-packs.md`). Como mucho un patrón nuevo por sesión, sin
+datos del aprendiz, y avisándolo en el cierre.
+
 Si un ítem pasa a `mastered`, **decírselo**. Y si un `mastered` aprueba el repaso de 60 días,
 moverlo a `mastered_archive` y nombrarlo (`07-spaced-repetition.md`). Un ítem que simplemente no
 aparece no se archiva: no aparecer no es evidencia de dominio. Ver errores salir de la lista es la única señal visible de
